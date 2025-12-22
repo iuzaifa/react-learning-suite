@@ -1,9 +1,13 @@
+import WelcomeMessage from "./components/WelcomeMessage.jsx";
+import ProfileCard from "./components/ProfileCard.jsx";
 
 function App() {
 
   return (
     <>
-      <h2 className={`text-red-600`}>Lorem ipsum dolor sit.</h2>
+
+        <WelcomeMessage/>
+        <ProfileCard/>
     </>
   )
 }

@@ -19,7 +19,7 @@ function App() {
       <td className="text-xs border p-1.5">{row.class}</td>
       <td className="text-xs border p-1.5">{row.subjects.join(", ")}</td>
       <td className="text-xs border p-1.5">
-        <button className="text-blue-600">Edit</button>
+        <button className="text-blue-600">Delete</button>
       </td>
     </>
   );

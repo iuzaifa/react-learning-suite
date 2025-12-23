@@ -1,10 +1,25 @@
+import { useEffect, useState } from "react";
 
 
 const Table = ({ data, headers, renderRow }) => {
+  const [searchTerm, setSearchTerm ] = useState("");
+
+  const filteredData = data.filter((item) => 
+    item.name.toLowerCase().includes(searchTerm.toLocaleLowerCase()));
   return (
     <>
       <div className="max-w-6xl bg-gray-50 border-slate-100 border p-4 mx-auto">
+        <div className="mb-4">
+          <input
+            type="text"
+            placeholder="Search by student name..."
+            className="w-full md:w-1/3 p-2 border border-slate-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
         <table className="w-full border border-collapse border-slate-300">
+          {/* Search Input */}
+
           <thead>
             <tr>
               {headers.map((col) => (
@@ -50,9 +65,11 @@ const Table = ({ data, headers, renderRow }) => {
               </tr>
             ))} */}
 
-            {data.map((row) => (
-              <tr key={row.id}>{renderRow(row)}</tr>
-            ))}
+            {filteredData.length > 0 ? (
+              filteredData.map((row) => <tr key={row.id}>{renderRow(row)}</tr>)
+            ) : (
+              <>No Data Found </>
+            )}
           </tbody>
         </table>
       </div>
